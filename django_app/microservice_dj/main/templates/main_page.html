@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dj_page</title>
+</head>
+<body>
+
+<h1>Django_resp</h1>
+<section style="width: 80%; height: 300px; margin: 10px auto; border: 1px solid red" >
+    <h2>{{parse_info}}</h2>
+    <h1>{{date_today}}</h1>
+    <div id="django_data"></div>
+</section>
+
+<h1>Fastapi_resp</h1>
+<section style="width: 80%; height: 300px; margin: 10px auto; border: 1px solid red" >
+    <h4>{{render_data}}</h4>
+    <div id="fastapi_data"></div>
+</section>
+
+<script>
+    setInterval(() => fetch('http://127.0.0.1:3000/currency', {
+        method: "GET",
+    }).then(currency => {
+            let a = document.getElementById("django_data")
+            a.innerHTML = `${currency.message}`
+        })
+        , 1000)
+    setInterval(() => fetch('http://127.0.0.1:3000/weather', {
+        method: "GET",
+    }).then(weather => {
+            let b = document.getElementById('fastapi_data')
+            b.innerHTML=`${weather.message}`
+        })
+        , 1000)
+</script>
+</body>
+</html>

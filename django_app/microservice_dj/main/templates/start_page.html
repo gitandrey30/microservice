@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Service</title>
+</head>
+<body>
+<h1>Hi. Welcome to start page</h1>
+<h2>auth_form </h2>
+<form action="{% url 'auth' %}", method="POST", enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <textarea name="user_text" id="" cols="30" rows="10"></textarea>
+    <br>
+    <button>ok</button>
+</form>
+
+</body>
+</html>
